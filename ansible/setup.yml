@@ -1,0 +1,15 @@
+- hosts: localhost
+  tasks:
+
+    - name: Lade Asset aus privatem GitHub Release
+      community.general.github_release:
+        user: dietWall
+        repo: openocd-tcl-controller
+        token: "{{ lookup('env', 'GITHUB_TOKEN') }}"
+        action: latest_release
+      register: gh_release
+    
+    - name: Print return information from the previous task
+      ansible.builtin.debug:
+        var: gh_release
+        verbosity: 2

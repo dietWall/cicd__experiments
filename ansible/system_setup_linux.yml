@@ -1,0 +1,18 @@
+- hosts: localhost
+  tasks:
+
+    - name: install_github_cli
+      ansible.builtin.shell: scripts/download_gh.sh
+      become: true
+
+    - name: update_system
+      apt: 
+        update_cache: true
+        upgrade: safe
+      become: true
+    
+    - name: install_additional_packets
+      apt:
+        name: [curl, jq, python3-pip]   #, docker.io
+        state: latest
+      become: true
