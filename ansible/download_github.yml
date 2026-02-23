@@ -1,0 +1,14 @@
+- hosts: localhost
+  tasks:
+
+  - name: Print directory
+    ansible.builtin.shell: ls -la 
+    
+  - name: Download TCL-Tools
+    ansible.builtin.shell: /usr/bin/bash -c "source .env && ./download.sh dietWall openocd-tcl-controller '.tar.gz.zip'"
+
+  #download repo_helper:
+  - name: unzip everything
+    ansible.builtin.shell: unzip *.zip
+
+  
