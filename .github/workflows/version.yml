@@ -3,7 +3,7 @@ on:
     create:
 permissions:
   contents: write
-  
+
 jobs:
     bump-version:
         runs-on: ubuntu-latest
@@ -21,10 +21,7 @@ jobs:
             - name: Run version bump script
               run: python version.py
             
-            - name: Commit and push changes
-              run: |
-                git config --local user.email "action@github.com"
-                git config --local user.name "GitHub Action"
-                git add .
-                git commit -m "Bump version" || echo "No changes to commit"
-                git push
+            - name: Commit & Push changes
+              uses: actions-js/push@master
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
