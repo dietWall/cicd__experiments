@@ -43,3 +43,6 @@
 .venv
 .env
 sudo*
+
+__pycache__/
+*.pyc
